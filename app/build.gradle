@@ -53,5 +53,6 @@ dependencies {
     //    Dagger
     implementation 'com.google.dagger:dagger:2.43'
     kapt 'com.google.dagger:dagger-compiler:2.43'
-
+    // ViewBinding
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.3'
 }
