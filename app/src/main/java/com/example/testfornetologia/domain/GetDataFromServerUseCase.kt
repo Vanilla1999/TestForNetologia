@@ -5,8 +5,9 @@ import com.example.testfornetologia.data.network.NetworkRepository
 import com.example.testfornetologia.data.network.model.Json
 import com.example.testfornetologia.utils.ResponseServer
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class GetDataFromServerUseCaseImpl (private val remouteRepository: NetworkRepository):
+class GetDataFromServerUseCaseImpl @Inject constructor(private val remouteRepository: NetworkRepository):
     GetDataFromServerUseCase {
     override suspend fun getDataFromServer(): ResponseServer<Json?> {
         TODO("Not yet implemented")

@@ -10,16 +10,21 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import com.example.testfornetologia.App.Companion.appComponentMain
 import com.example.testfornetologia.R
 import com.example.testfornetologia.databinding.ActivityMainBinding
+import com.example.testfornetologia.di.mainActivtiy.DaggerMainActvitityComponent
+import com.example.testfornetologia.di.mainActivtiy.MainActvitityComponent
 
 class MainActivity : AppCompatActivity() {
-
+    lateinit var activityComponent: MainActvitityComponent
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
+        activityComponent = DaggerMainActvitityComponent.factory().create(appComponentMain)
+        activityComponent.inject(this)
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
