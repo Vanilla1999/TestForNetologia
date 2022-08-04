@@ -1,4 +1,4 @@
-package com.example.testfornetologia
+package com.example.testfornetologia.presentation
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -10,6 +10,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import com.example.testfornetologia.R
 import com.example.testfornetologia.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
