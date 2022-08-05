@@ -54,6 +54,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             viewModelHome.responseNetworkStateFlow.collect {
                 when (it) {
                     is ResponseServer.Success -> {
+                        closeLoader()
                         adapter.update(it.value.data)
                     }
                     is ResponseServer.Loading -> {
@@ -70,6 +71,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             viewModelHome.sharedStateFlowError.collect {
                 when (it) {
                     is ErrorApp.FailureNetwork -> {
+                        closeLoader()
                         Toast.makeText(
                             context,
                             getString(R.string.server_error, it.errorBody.toString(),it.errorCode.toString()),
@@ -77,6 +79,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         ).show()
                     }
                     is ErrorApp.FailureUnknown -> {
+                        closeLoader()
                         Toast.makeText(
                             context,
                             getString(R.string.unknown_error, it.value.toString()),
@@ -84,6 +87,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         ).show()
                     }
                     is ErrorApp.FailureEnternet ->{
+                        closeLoader()
                         Toast.makeText(
                             context,
                             getString(R.string.network_error),
@@ -109,10 +113,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         )
     }
 
+    private fun closeLoader(){
+        binding.loader.visibility=View.GONE
+        binding.rvData.visibility=View.VISIBLE
+        binding.title.visibility=View.VISIBLE
+    }
 
 
     private fun showLoading() {
-
+        binding.loader.visibility=View.VISIBLE
+        binding.rvData.visibility=View.GONE
+        binding.title.visibility=View.GONE
     }
 
 
