@@ -5,6 +5,7 @@
     <string name="network_error">Ошибка при получении данных сервера - возможно, нет интернета  </string>
     <string name="server_error">Ошибка при получении данных сервера - Тело ошибки: %s, код ошибки:  %s  </string>
     <string name="unknown_error">Неизвестная ошибка - %s</string>
-    <string name="titleHome">Изучайте <font color='#0f93ff'>актуальные \n темы</font></string>
+    <string name="titleHome">Изучайте <font color='#0f93ff'>актуальные \nтемы</font></string>
+    <string name="text_view_cource_count">%s курсов</string>
 
 </resources>

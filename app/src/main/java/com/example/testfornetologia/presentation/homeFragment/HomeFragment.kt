@@ -15,6 +15,7 @@ import com.example.testfornetologia.data.network.model.Json
 import com.example.testfornetologia.databinding.FragmentHomeBinding
 import com.example.testfornetologia.di.mainActivtiy.DaggerHomeFragmentComponent
 import com.example.testfornetologia.di.mainActivtiy.HomeFragmentComponent
+import com.example.testfornetologia.presentation.homeFragment.adapter.DataListAdapter
 import com.example.testfornetologia.presentation.mainActivity.MainActivity
 import com.example.testfornetologia.utils.ErrorApp
 import com.example.testfornetologia.utils.ResponseServer
@@ -30,7 +31,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     @Inject
     lateinit var factory: FactoryHomeFragmentViewModel
     private val viewModelHome by viewModels<HomeFragmentViewModel> { factory }
-
+    private lateinit var adapter: DataListAdapter
     override fun onAttach(context: Context) {
         super.onAttach(context)
         homeFragmentComponent = DaggerHomeFragmentComponent.factory()
@@ -41,6 +42,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initRecyclerView()
         initFlowDataFromServer()
         initFlowError()
     }
@@ -50,7 +52,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             viewModelHome.responseNetworkStateFlow.collect {
                 when (it) {
                     is ResponseServer.Success -> {
-                        initRecyclerView(it.value)
+                        adapter.update(it.value.data)
                     }
                     is ResponseServer.Loading -> {
                         showLoading()
@@ -91,9 +93,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
-    private fun initRecyclerView(json: Json) {
-
+    private fun initRecyclerView() {
+        adapter = DataListAdapter {
+            Toast.makeText(
+                context,
+                "элемент ${it.direction.title}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        binding.rvData.adapter = adapter
     }
+
+
 
     private fun showLoading() {
 
