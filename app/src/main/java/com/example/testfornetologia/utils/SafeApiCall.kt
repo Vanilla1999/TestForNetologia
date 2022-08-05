@@ -14,7 +14,9 @@ interface SafeApiCall {
     ) {
         try {
             collector.emit(ResponseServer.Loading)
-            val result = coroutineScope { withContext(Dispatchers.IO) { apiCall.invoke() }  }
+            val result = coroutineScope { withContext(Dispatchers.IO) {
+                delay(2000)
+                apiCall.invoke() }  }
             collector.emit(ResponseServer.Success(result))
         } catch (throwable: Throwable) {
             when (throwable) {
