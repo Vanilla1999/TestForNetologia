@@ -6,6 +6,9 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="network_error">Ошибка при получении данных сервера - возможно, нет интернета  </string>
+    <string name="server_error">Ошибка при получении данных сервера - Тело ошибки: %s, код ошибки:  %s  </string>
+    <string name="unknown_error">Неизвестная ошибка - %s</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

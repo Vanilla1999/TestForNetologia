@@ -9,12 +9,12 @@ import javax.inject.Inject
 
 class GetDataFromServerUseCaseImpl @Inject constructor(private val remouteRepository: NetworkRepository):
     GetDataFromServerUseCase {
-    override suspend fun getDataFromServer(): ResponseServer<Json?> {
-        TODO("Not yet implemented")
+    override suspend fun getDataFromServer():  Flow<ResponseServer<Json>>{
+       return remouteRepository.getDataFromServer()
     }
 
 }
 
 interface GetDataFromServerUseCase {
-    suspend fun getDataFromServer(): ResponseServer<Json?>
+    suspend fun getDataFromServer(): Flow<ResponseServer<Json>>
 }

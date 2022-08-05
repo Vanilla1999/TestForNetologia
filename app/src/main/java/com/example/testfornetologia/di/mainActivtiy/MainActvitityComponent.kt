@@ -7,7 +7,7 @@ import com.example.testfornetologia.di.ApplicationComponent
 import com.example.testfornetologia.di.MainActivityScope
 import com.example.testfornetologia.domain.GetDataFromServerUseCase
 import com.example.testfornetologia.domain.GetDataFromServerUseCaseImpl
-import com.example.testfornetologia.presentation.MainActivity
+import com.example.testfornetologia.presentation.mainActivity.MainActivity
 import dagger.Binds
 import dagger.Component
 import dagger.Module
