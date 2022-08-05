@@ -55,4 +55,5 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.43'
     // ViewBinding
     implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.3'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 }
